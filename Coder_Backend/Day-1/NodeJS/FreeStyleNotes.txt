@@ -1,0 +1,9 @@
+1. Today we have started the Backend Journey, where we can learn all the concept in fun and interactive way.
+
+NodeJS --> NodeJS is a free open-source cross-platform JavaScript runtime env that lets developers create 
+servers, web apps, command line tools and scripts.
+
+V8 Engine developed by Google. 
+
+Why they use C++ lang? --> because C++ lang is developed before JS and is fast because it can interact with directly with system to execute the task 
+v8 Engine --> It is just a piece of code which is written in C++ that can understand your JS code.  
