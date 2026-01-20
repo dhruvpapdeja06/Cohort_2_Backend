@@ -1,0 +1,18 @@
+
+1. How to increase the confidence in React.(Practise more)
+
+2. Competition --> Pure Vanila JS, make on Canvas, DOM. (Inter Batch showdown) 
+
+3.Small Backend Project , time to intergrate to F.E.
+
+4. Websocket --> Twitter home page for msg(chat pannel),parllel chat mimics, insta replication.
+
+5.Interview Question
+
+6.Sheri OS --> It is webbased OS. Add more features.How to add functionality. 
+
+7.Backend + DevOps 
+
+8.Holi --> time Hackathon
+
+9.Next Baatchit Session on Portfolio , Job Approach.
