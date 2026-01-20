@@ -7,7 +7,7 @@
 
 4. Websocket --> Twitter home page for msg(chat pannel),parllel chat mimics, insta replication.
 
-5.Interview Question
+5.Interview Question , Practise question on Js
 
 6.Sheri OS --> It is webbased OS. Add more features.How to add functionality. 
 
