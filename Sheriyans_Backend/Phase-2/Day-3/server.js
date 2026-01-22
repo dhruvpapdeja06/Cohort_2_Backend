@@ -39,3 +39,5 @@ app.get('/contact',(req,res) =>{
 
 // npx nodemon server.js
 app.listen(3000); //server start
+
+// Deploy server on Render
