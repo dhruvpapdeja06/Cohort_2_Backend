@@ -59,5 +59,7 @@ app.delete('/notes/:index',(req,res)=>{
 
 // Problem in this code is that when we update on the server then data will be lost
 
+// Work of garbage collector , Node Js run time env ma handle karta hai
+
 
 module.exports = app;
