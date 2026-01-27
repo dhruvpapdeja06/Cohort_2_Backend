@@ -1,0 +1,19 @@
+CLUSTER => Combination of storage + Processor
+DataBase (It is also one type of server.)
+
+Cloud => MongoDB Atlas is Company (Create a lots of DB Server and placed in different location in worldwide
+=> In India (Mumbai south zone) --> Take a small storage and processing to store our data here. 
+
+Types of Server
+
+1.Web server ==> We have create to host webpages (Apache,Nginx,IIS)
+2.Mail Server 
+3.Application Server ==> Host application to run .often uses middleware between client and server.
+4.File Server ==> centralized storage for mulitple user.
+
+To secure the DB we have to to layer first Network Access Layer and another one is DataBase Layer.
+
+In Network Access Layer if DB Server in production IP is static and we have to allow only that IP.
+In Developement you can allow any IP for learning Purpose becuase your IP change 
+
+In One Cluster there multiple Database we can create.
