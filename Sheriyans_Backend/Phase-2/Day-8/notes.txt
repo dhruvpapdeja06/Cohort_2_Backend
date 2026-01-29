@@ -1,0 +1,14 @@
+// user  --> dhruv2017papdeja_db_user
+// Passwd --> iQOAx1ORTMqJ7GKl
+
+1. In one project one cluster free , for second cluster create an new project. 
+
+2. Schema Create --> In Db what data store and which format you have to store it.
+
+    Process of telling the DB the type of data is Schema.
+
+Note = 
+{
+    title - string
+    description - string
+}
