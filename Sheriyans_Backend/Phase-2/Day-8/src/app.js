@@ -14,8 +14,8 @@ app.use(express.json());
 app.post('/notes',async (req,res)=>{
     const { title , description } = req.body
 
-    const noe = await noteModel.create({
-        title, descripiton
+    const note = await noteModel.create({
+        title,descripiton
     })
 
     res.status(202).json({

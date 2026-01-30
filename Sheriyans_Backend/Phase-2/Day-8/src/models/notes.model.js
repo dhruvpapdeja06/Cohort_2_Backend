@@ -5,7 +5,7 @@ const noteSchema = new mongoose.Schema({
     description : String,
 })
 
-// To perform the model on DB (CRUD for that we need it modal)
+//Perform operation on DB we need a model.
 
 // In DB we can store mulitple notes data.
 
