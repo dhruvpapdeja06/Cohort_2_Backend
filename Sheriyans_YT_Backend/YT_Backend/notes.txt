@@ -1,0 +1,11 @@
+
+1. Server --> Server is a machine which has own os,ram and harddisk that process the data.  How is different from our system, we programmed such a way so that it serves the user rqst  and give back to the response.
+
+Example --> Amazon website search bar --> User any query based on that give the Result. Insta Post create Image select and caption , programmed like that when you post it show to followers.
+
+Server creation we need a programming lang which one to choose
+
+Server Programming Lang --> Ruby ,Python,Go , Java, C++ , here we use Js , Create good Server 
+TO run the JS we need a NodeJs.
+
+
