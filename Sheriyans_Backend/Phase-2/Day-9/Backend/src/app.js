@@ -16,7 +16,7 @@ const noteModel = require("./models/notes.model")
 
 const app = express();
 
-app.use(cors())
+app.use(cors() ) 
 
 // middleware
 app.use(express.json())
@@ -76,6 +76,13 @@ app.patch("/api/notes/:id", async (req,res)=>{
         message : "Notes Updated successfully",
         note
     })
+})
+
+
+// Handle the api which we have not create 
+app.use('*name',(req,res)=>{
+    // res.send("This is wild card")
+    res.sendFile("/public/index.html")
 })
 
 module.exports = app;
