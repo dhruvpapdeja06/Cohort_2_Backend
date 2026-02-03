@@ -40,15 +40,52 @@ const App = () => {
   }
 
   useEffect(()=>{
-    fetchNotes();
+    fetchNotes()
   },[])
 
 
-  function handleSubmit(){}
+  // Post Api Integrate
+  function handleSubmit(e){
+    e.preventDefault()
 
-  // Post Api
+    const { title , description } = e.target.elements
 
+    axios.post("http://localhost:3000/api/notes",{
+      title : title.value,
+      description : description.value
+    })
+    .then(res=>{
+      console.log(res.data);
+      fetchNotes();
+    })
+  }
 
+  // Delete Api Intergration
+  function handleDeleteNote(noteId){
+    // console.log(noteId);
+    axios.delete("http://localhost:3000/api/notes/"+noteId)
+      .then(res=>{
+        console.log(res.data);
+
+        fetchNotes();
+      })
+  }
+
+  // Patch Api Intergration
+  function handleUpdateNote(e,noteId){
+    e.preventDefault();
+
+    const { description } = e.target.elements;
+
+    axios.patch("http://localhost:3000/api/notes/"+noteId,{
+      description : description.value
+    })
+    .then(res=>{
+      console.log(res.data);
+      fetchNotes();
+    })
+    .catch(err => console.log(err));
+  }
 
   return (
 
@@ -57,22 +94,24 @@ const App = () => {
   <form className="note-create-form" onSubmit={handleSubmit}>
       <div className="note-form">
         <label htmlFor="title">Title :  </label>
-          <input type="text" id="title" placeholder="Enter you title" />
+          <input name="title" type="text" id="title" placeholder="Enter you title" />
       </div>
 
       <div className="note-form">
         <label htmlFor="description">Description :  </label>
-        <input type="text" id="description" placeholder="Enter your description" />
+        <input name="description" type="text" id="description" placeholder="Enter your description" />
       </div>
-      <button>Submit</button>
+      <button>Create Note</button>
     </form>
 
     <div className="notes">
       {notes.map((note) => {
         return (
           <div className="note">
-            <h2>title: {note.title}</h2>
-            <h3>descripiton: {note.description}</h3>
+            <h2>{note.title}</h2>
+            <h3>{note.description}</h3>
+            <button onClick={()=>{handleDeleteNote(note._id)}}>Delete Note</button>
+            <button onClick={()=>{handleUpdateNote(note._id)}}>Update </button>
           </div>
         );
       })}

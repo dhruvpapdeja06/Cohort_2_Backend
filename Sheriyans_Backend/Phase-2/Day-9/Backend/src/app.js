@@ -80,9 +80,9 @@ app.patch("/api/notes/:id", async (req,res)=>{
 
 
 // Handle the api which we have not create 
-app.use('*name',(req,res)=>{
-    // res.send("This is wild card")
-    res.sendFile("/public/index.html")
-})
+// app.use('*name',(req,res)=>{
+//     // res.send("This is wild card")
+//     res.sendFile("/public/index.html")
+// })
 
 module.exports = app;

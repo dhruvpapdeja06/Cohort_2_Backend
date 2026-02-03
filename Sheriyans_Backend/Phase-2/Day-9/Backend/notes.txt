@@ -1,0 +1,25 @@
+  
+        Steps to run the application.
+
+1. Cost Calculation to Run the Project and how to optimize it.
+
+
+--> Frontend run on the different port and backend run the different Port , For cross origion we have to use
+middleware at the backend that is cors.
+
+--> If We seperate the host the website in frontend in Vercel and Backend in Render it wiil increase the Cost
+
+Cost Calculation -->
+
+Frontend (Vercel) --> Free for 50 concurrent User  --> Paid (200user) -- 10$Cost.
+
+Backend (Render) --> 0.1 CPU then 10 concurrent User , if more than user then go for paid 25$/month to handle 200user.
+
+
+
+
+                        (Host frontend in Backend)
+Frontend  -------> npm run build --------> dist folder that is converted into HTML,CSS,JS folder.
+
+Before 
+Static (Folder inside assets publicly available) --> Public then src now it's available 
