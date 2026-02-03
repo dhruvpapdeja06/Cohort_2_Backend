@@ -3,6 +3,13 @@ import "./index.css";
 import axios from "axios";
 
 const App = () => {
+
+
+  // Update
+  const [description,setDescription] = useState("");
+  const [showModal,setShowModal] = useState(false);
+  const [selectedNote,setSelectedNote] = useState(null);
+
   /**
   const [notes,setNotes] = useState([
     {
@@ -49,7 +56,7 @@ const App = () => {
     e.preventDefault()
 
     const { title , description } = e.target.elements
-
+    
     axios.post("http://localhost:3000/api/notes",{
       title : title.value,
       description : description.value
@@ -71,18 +78,26 @@ const App = () => {
       })
   }
 
+
+  function openUpdateModal(note){
+    setSelectedNote(note);
+    setDescription(note.description);
+    setShowModal(true);
+  }
+
   // Patch Api Intergration
-  function handleUpdateNote(e,noteId){
+  function handleUpdateNote(e){
     e.preventDefault();
 
-    const { description } = e.target.elements;
+    // const { description } = e.target.elements;
 
-    axios.patch("http://localhost:3000/api/notes/"+noteId,{
-      description : description.value
+    axios.patch("http://localhost:3000/api/notes/"+selectedNote._id,{
+      description
     })
     .then(res=>{
       console.log(res.data);
       fetchNotes();
+      setShowModal(false);
     })
     .catch(err => console.log(err));
   }
@@ -104,14 +119,30 @@ const App = () => {
       <button>Create Note</button>
     </form>
 
+
+    {showModal && (
+      <div className="modal">
+        <form onSubmit={handleUpdateNote}>
+          <h3>Update Description</h3>
+          <textarea name="description" value={description} onChange={(e)=>setDescription(e.target.value)}></textarea>
+          <div className="modal-btn">          
+          <button type="submit">Save</button>
+          <button type="button" onClick={()=>setShowModal(false)}>Cancel</button>
+          </div>
+
+        </form>
+      </div>
+    )}
+
+
     <div className="notes">
       {notes.map((note) => {
         return (
-          <div className="note">
+          <div className="note" key="note._id">
             <h2>{note.title}</h2>
             <h3>{note.description}</h3>
             <button onClick={()=>{handleDeleteNote(note._id)}}>Delete Note</button>
-            <button onClick={()=>{handleUpdateNote(note._id)}}>Update </button>
+            <button onClick={()=>{openUpdateModal(note)}}>Update </button>
           </div>
         );
       })}

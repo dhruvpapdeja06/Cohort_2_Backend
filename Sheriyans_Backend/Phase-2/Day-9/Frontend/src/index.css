@@ -22,6 +22,43 @@ html{
   
 }
 
+/* modal */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.modal form {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  height: 180px;
+  border-radius: .5rem;
+}
+
+textarea{
+  width: 250px;
+  height: 60px;
+  border-radius: .25rem;
+  padding: .25rem;
+
+}
+
+.modal-btn{
+  margin-top : .5rem;
+  display: flex;
+}
+
 .note-create-form{
   margin-top: 2rem;
   height: 12rem;
@@ -82,7 +119,7 @@ button{
 
 .note{
   padding : 1rem;
-  max-width: 25rem;
+  width: 20rem;
   background-color: rgb(37, 35, 35);
   border-radius: 1.2rem;
   text-wrap: wrap;

@@ -10,14 +10,14 @@
 
 const express = require("express")
 const cors = require("cors")
-
+const path = require("path")
 const noteModel = require("./models/notes.model")
 
 
 const app = express();
 
 app.use(cors() ) 
-
+app.use(express.static("./public"))
 // middleware
 app.use(express.json())
 
