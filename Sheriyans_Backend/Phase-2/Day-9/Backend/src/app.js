@@ -25,7 +25,7 @@ app.use(express.json())
 
 
 // post /api/notes
-app.post("/api/notes", async (req,res)=>{
+app.post("api/notes", async (req,res)=>{
     const { title, description } = req.body
     
     // new note create which data pass as obj --> data store in mumbai cluster and get the ack based on the internet
@@ -42,7 +42,7 @@ app.post("/api/notes", async (req,res)=>{
 })
 
 //get -- >find --> array of obj
-app.get("/api/notes", async (req,res)=>{
+app.get("api/notes", async (req,res)=>{
     const note = await noteModel.find();
 
     res.status(200).json({
@@ -52,7 +52,7 @@ app.get("/api/notes", async (req,res)=>{
 })
 
 // delete
-app.delete('/api/notes/:id', async (req,res)=>{
+app.delete('api/notes/:id', async (req,res)=>{
     const id = req.params.id
 
     await noteModel.findByIdAndDelete(id)
@@ -66,7 +66,7 @@ app.delete('/api/notes/:id', async (req,res)=>{
 
 //patch  --> /api/notes/:id
 // req.body = { description }
-app.patch("/api/notes/:id", async (req,res)=>{
+app.patch("api/notes/:id", async (req,res)=>{
     const id = req.params.id
     const {description} = req.body
 

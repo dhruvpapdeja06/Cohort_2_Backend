@@ -40,7 +40,7 @@ const App = () => {
   function fetchNotes() {
     console.log("Fetch Function call");
     // Get api call
-    axios.get("https://cohort-2-backend-2.onrender.com/api/notes").then((res) => {
+    axios.get("https://note-app-m25h.onrender.com/api/notes").then((res) => {
       // When you change the state variable then it re-render the component.
       setNotes(res.data.note);
     });
@@ -57,7 +57,7 @@ const App = () => {
 
     const { title , description } = e.target.elements
     
-    axios.post("https://cohort-2-backend-2.onrender.com/api/notes",{
+    axios.post("https://note-app-m25h.onrender.com/api/notes",{
       title : title.value,
       description : description.value
     })
@@ -70,7 +70,7 @@ const App = () => {
   // Delete Api Intergration
   function handleDeleteNote(noteId){
     // console.log(noteId);
-    axios.delete("https://cohort-2-backend-2.onrender.com/api/notes/"+noteId)
+    axios.delete("https://note-app-m25h.onrender.com/api/notes/"+noteId)
       .then(res=>{
         console.log(res.data);
 
@@ -91,7 +91,7 @@ const App = () => {
 
     // const { description } = e.target.elements;
 
-    axios.patch("https://cohort-2-backend-2.onrender.com/api/notes/"+selectedNote._id,{
+    axios.patch("https://note-app-m25h.onrender.com/api/notes/"+selectedNote._id,{
       description
     })
     .then(res=>{
