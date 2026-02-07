@@ -2,6 +2,7 @@ const express = require("express")
 const userModel = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const authRouter = express.Router()
+const crypto = require("crypto")
 
 // other than app.js if we create an API for that  we need an Router
 
@@ -35,6 +36,7 @@ authRouter.post("/register", async (req,res)=>{
       ]
     })
 
+
     if(isUserAlreadyExist){
         const conflictField = isUserAlreadyExist.email === email ? "Email" : "Mobile Number";
         return res.status(409).json({
@@ -42,9 +44,10 @@ authRouter.post("/register", async (req,res)=>{
         })
     }
 
+    const hash = crypto.createHash("md5").update(password).digest("hex")
 
     const user = await userModel.create({
-        name, email, mobile, password
+        name, email, mobile, password : hash
     })
 
     const token = jwt.sign(
@@ -86,10 +89,12 @@ authRouter.post("/protected", (req,res)=>{
 
 //md5 hast generator
 
-authRouter("/login", async (req,res)=>{
+// check awards   --> from that we can make frontend website
+
+authRouter.post("/login", async (req,res)=>{
     const {email, password} = req.body
 
-    const user = userModel.find({email})
+    const user = await userModel.findOne({email})
 
     if(!user){
         res.status(404).json({
@@ -97,7 +102,7 @@ authRouter("/login", async (req,res)=>{
         })
     }
 
-    const isPasswordMatched = user.password === password
+    const isPasswordMatched = user.password === crypto.createHash('md5').update(password).digest("hex")
 
     
     if(!isPasswordMatched){
@@ -121,3 +126,8 @@ authRouter("/login", async (req,res)=>{
 })
 
 module.exports = authRouter;
+
+
+// Hash --> Propery --> same input always generate same has value
+// one way , Hash doesn't change into the plain text --> used to store the password.
+

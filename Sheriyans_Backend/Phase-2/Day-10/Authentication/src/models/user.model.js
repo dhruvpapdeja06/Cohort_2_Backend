@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         unique : [true, "Mobile Number is already exist"]
     },
-    passowrd : String
+    password : String
 })
 
 
