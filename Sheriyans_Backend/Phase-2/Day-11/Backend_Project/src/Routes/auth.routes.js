@@ -1,15 +1,17 @@
 const express = require("express")
-const userModel = require('../models/user.model')
 const authRouter = express.Router()
-const crypto = require("crypto")
-const jwt = require('jsonwebtoken')
+const authController = require('../controllers/auth.controller')
+
 /**
  *  /post/api/register
  * 
  */
 
+authRouter.post('/register',authController.registerController)
+
 
 // The Problem in this API is that it's not optimized to validate the user 2 rqst sent to server {email,username}
+/** 
 authRouter.post('/register', async (req,res)=>{
     const {username, email, password} = req.body
 
@@ -54,11 +56,12 @@ authRouter.post('/register', async (req,res)=>{
     })
 })
 
+*/
 
 /**
  *  /post/api/login
  */
 
-
+authRouter.post('/login',authController.loginController)
 
 module.exports = authRouter;
