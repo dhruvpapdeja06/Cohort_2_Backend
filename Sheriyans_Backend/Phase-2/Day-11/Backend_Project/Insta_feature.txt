@@ -1,0 +1,21 @@
+
+//First we have decide the feature before creating the frontend and backend.
+
+// After decide the feature then create the Backend
+
+==> Authentication
+    ==> Register --> User data save on db, and token generation
+    ==> Login
+    ==> logout(token blacklisting)
+    ==> [OTP Based Registration ] --> Intermediate(At end)
+
+==> Post 
+    ==> Create
+    ==> Can see the feed
+    => Like,comment,save , share
+    ==> MongoDB(Collection Type)
+
+
+==> users
+    ==> followers
+    ==> following

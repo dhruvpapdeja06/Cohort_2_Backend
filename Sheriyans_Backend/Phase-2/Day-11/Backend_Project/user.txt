@@ -1,0 +1,11 @@
+user = {
+    username: String,
+    email: String,
+    password: String,
+    bio : String,
+    followers: Array,//
+    following: Array, //  -> later
+    profile_image: String -->Why not express handle it for that we have to use it multer.express-validator,node-mailer
+
+
+}
