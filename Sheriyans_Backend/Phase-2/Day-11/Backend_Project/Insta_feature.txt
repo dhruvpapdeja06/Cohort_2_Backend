@@ -11,6 +11,7 @@
 
 ==> Post 
     ==> Create
+      --> caption , img_Url , user: userID, createdAt: Date-time , Img handling 
     ==> Can see the feed
     => Like,comment,save , share
     ==> MongoDB(Collection Type)

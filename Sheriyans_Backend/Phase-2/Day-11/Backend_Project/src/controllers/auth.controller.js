@@ -1,7 +1,11 @@
 
 const userModel = require('../models/user.model')
-const crypto = require("crypto")
+// const crypto = require("crypto")
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+
+
+//crypt pkg is used to low level code security
 
 // If user enter email then username is undefined , vice-versa
 
@@ -26,7 +30,8 @@ async function registerController(req,res){
         })
     }
 
-    const hash = crypto.createHash('sha256').update(password).digest('hex')
+    // const hash = crypto.createHash('sha256').update(password).digest('hex')
+    const hash = await bcrypt.hash(password, 10)
 
     const user = await userModel.create({
         username,
@@ -78,9 +83,9 @@ async function loginController(req,res){
         })
     }
 
-    const hash = crypto.createHash('sha256').update(password).digest('hex')
+    /**  const hash = crypto.createHash('sha256').update(password).digest('hex') */
 
-    const isPasswordValid = hash == isUserValid.password
+    const isPasswordValid = await bcrypt.compare(password, isUserValid.password)
 
     if(!isPasswordValid){
         return res.status(401).json({

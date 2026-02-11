@@ -65,3 +65,13 @@ authRouter.post('/register', async (req,res)=>{
 authRouter.post('/login',authController.loginController)
 
 module.exports = authRouter;
+
+
+//Sever bandwidth pricing --> If size of image is 20kb then 200mb 
+// -Sever bandwidth pricing is high as compared to cloud stroage provider. --> pricing is low in cloud provider
+
+//aws(s3),imagekit, cloudary,
+
+//server --> rqst to imagekit , and give the url
+
+//multer --> use case --> give the power to express that read the file from the frontend. --> memoryStorage --> Temporary store the file. 
