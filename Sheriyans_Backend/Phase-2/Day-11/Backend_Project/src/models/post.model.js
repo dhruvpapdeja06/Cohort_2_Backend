@@ -20,3 +20,5 @@ const postSchema = new mongoose.Schema({
 const postModel = mongoose.model("posts",postSchema);
 
 module.exports = postModel;
+
+// Token forgery --> Read or verify ,with the help of JWT, Token wrong means --> temper
