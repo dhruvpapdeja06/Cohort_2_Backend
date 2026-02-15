@@ -78,6 +78,89 @@ async function createPostController(req,res){
  */
 
 
+async function getPostController(req,res){
+    const token = req.cookies.token  //Identify the user based on id
+
+    if(!token){
+        return res.status(401).json({
+            message: "Unauthorized token"
+        })
+    }
+
+
+    let decoded = null
+    try{
+         decoded = jwt.verify(token,process.env.JWT_SECRET)  //TO verify the token if right then save it
+    }catch(err){
+        return res.status(401).json({
+            messsge: "Token invalid"
+        })
+    }
+
+    const userId = decoded.id
+
+
+    // Return all the post , user rqst it based on the id --> which user create it store id 
+    const posts = await postModel.find({
+        user: userId
+    })
+
+    res.status(200)
+    .json({
+        message : "Posts fetched successfully",
+        posts
+    })
+}
+
+
+async function getPostDetailsController(req,res){
+    const token = req.cookies.token
+
+    if(!token){
+        return res.status(401).json({
+            message: "Unauthorized token"
+        })
+    }
+
+    let decoded = null;
+    try{
+        decoded = jwt.verify(token,process.env.JWT_SECRET)
+    }catch(err){
+        return res.status(401).json({
+            message: "Invalid Token"
+        })
+    }
+
+    const userId = decoded.id
+
+    const postId = req.params.postId
+
+    const post = await postModel.findById(postId)
+
+    //If post not get
+    if(!post){
+        return res.status(404).json({
+            message: "Post not found"
+        })
+    }
+    //convert into string
+    const isValidUser = post.user.toString() === userId //here compare objectid but when you compare in js not compare as normal expression which has different method
+    if(!isValidUser){
+        return res.status(403).json({
+            message: "Forbidden Content."
+        })
+    }
+    //If user and create post user match
+    return res.status(200).json({
+        "message" : "post fetched Successfully",
+        post
+    })
+}
+
+
+
 module.exports = {
-    createPostController
+    createPostController,
+    getPostController,
+    getPostDetailsController,
 }
