@@ -15,28 +15,11 @@ async function createPostController(req,res){
 
     // Express don't handle or read the file for that we use multer middleware
 
-
-    const token = req.cookies.token
-
-    if(!token){
-        return res.status(401).json({
-            message: "Token not provided , Unauthorized acess"
-        })
-    }
+    userId = req.user.id
 
     // If forgery in token
     //If status code is not right then at frontend engg face difficulty and all the bill come to you.
-    let decoded = null;
-    
-    try{
-         decoded = jwt.verify(token,process.env.JWT_SECRET)
-         console.log(decoded)
-    } catch (err){
-        return res.status(401).json({
-            message : "User not Authorized"
-        })
-    }
-
+   
     // const decoded = jwt.verify(token,process.env.JWT_SECRET)
     // console.log(decoded)
 
@@ -79,27 +62,10 @@ async function createPostController(req,res){
 
 
 async function getPostController(req,res){
-    const token = req.cookies.token  //Identify the user based on id
-
-    if(!token){
-        return res.status(401).json({
-            message: "Unauthorized token"
-        })
-    }
-
-
-    let decoded = null
-    try{
-         decoded = jwt.verify(token,process.env.JWT_SECRET)  //TO verify the token if right then save it
-    }catch(err){
-        return res.status(401).json({
-            messsge: "Token invalid"
-        })
-    }
-
-    const userId = decoded.id
-
-
+    
+    userId = req.user.id
+    // path == resource ko like img,video store
+    // route --> task perform --> post creation
     // Return all the post , user rqst it based on the id --> which user create it store id 
     const posts = await postModel.find({
         user: userId
@@ -113,25 +79,17 @@ async function getPostController(req,res){
 }
 
 
+// WHy we use Middleware --> here for token code is repeat in all the api to get the userId.
+// All rqst come by app --> further route it to base on the api hit.
+
+
+// app --> route in   authRouter          postRouter
+    // Post/api/posts   Get/api/posts  Get/api/posts/details/:postId
+
+// createPostController  getPostCont      getPostDetailsController   --> do the same work in it(Identifying the user)
+
 async function getPostDetailsController(req,res){
-    const token = req.cookies.token
-
-    if(!token){
-        return res.status(401).json({
-            message: "Unauthorized token"
-        })
-    }
-
-    let decoded = null;
-    try{
-        decoded = jwt.verify(token,process.env.JWT_SECRET)
-    }catch(err){
-        return res.status(401).json({
-            message: "Invalid Token"
-        })
-    }
-
-    const userId = decoded.id
+    const UserId = req.user.id
 
     const postId = req.params.postId
 

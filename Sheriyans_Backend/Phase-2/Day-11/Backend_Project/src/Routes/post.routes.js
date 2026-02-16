@@ -3,13 +3,14 @@ const postRouter = express.Router()
 const multer = require('multer')
 const upload = multer({storage: multer.memoryStorage()})
 const postController = require("../controllers/post.controller")
+const identifyUser = require("../middlewares/auth.middleware")
 
 
 
 
 //  /api/posts --> make this api protected --. token user acess it
 
-postRouter.post('/',upload.single("imageURL"),postController.createPostController)
+postRouter.post('/',upload.single("imageURL"),identifyUser,postController.createPostController)
 
 /**
  *  Get /api/posts  [protected]  -->server share the all post to the user
@@ -17,7 +18,7 @@ postRouter.post('/',upload.single("imageURL"),postController.createPostControlle
  * 
  */
 
-postRouter.get('/',postController.getPostController)
+postRouter.get('/',identifyUser,postController.getPostController)
 
 /**
  * GET /api/posts/details/:postid
@@ -25,7 +26,7 @@ postRouter.get('/',postController.getPostController)
  * -> Private account --> who created only get 
  */
 
-postRouter.get('/details/:postId',postController.getPostDetailsController)
+postRouter.get('/details/:postId',identifyUser,postController.getPostDetailsController)
 
 
 module.exports = postRouter;
