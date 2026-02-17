@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
 
-//crypt pkg is used to low level code security
+//crypt pkg is used to low code security
 
 // If user enter email then username is undefined , vice-versa
 
@@ -42,7 +42,11 @@ async function registerController(req,res){
     })
 
     const token = jwt.sign(
-        {id : user._id},
+        {
+            id : user._id,
+            username : user.username
+
+        },
         process.env.JWT_SECRET,{
             expiresIn: "1d"
         }
@@ -95,7 +99,10 @@ async function loginController(req,res){
     }
 
     const token = jwt.sign(
-        {id : isUserValid._id},process.env.JWT_SECRET,{
+        {
+            id : isUserValid._id,
+            username: isUserValid.username
+        },process.env.JWT_SECRET,{
             expiresIn: "1d"
         }
     )

@@ -3,8 +3,7 @@
 
 const express = require("express")
 const cookieParser = require("cookie-parser")
-const authRouter = require("./Routes/auth.routes")
-const postRouter = require("./Routes/post.routes")
+
 
 const app = express()
 
@@ -15,8 +14,15 @@ app.use(cookieParser())
 // app.use(express.urlencoded({ extended: true }));
 
 
+/** require routes */
+const authRouter = require("./Routes/auth.routes")
+const postRouter = require("./Routes/post.routes")
+const userRouter = require("./Routes/user.routes")
+
+// using routes 
 app.use('/api/auth',authRouter)
 app.use('/api/posts',postRouter)
+app.use('/api/users/',userRouter)
 
 
 

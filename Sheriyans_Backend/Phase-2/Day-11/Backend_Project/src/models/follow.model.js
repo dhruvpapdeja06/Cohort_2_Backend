@@ -1,21 +1,34 @@
 const mongoose = require("mongoose")
 
+
+/**
+ *  Edge collection --> Realtion between two users (followers and followee)
+ * 
+ */
 const followSchema = new mongoose.Schema({
     follower:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required: [true,"Followers is required"]
+        type: String
     },
     followee:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required:[true,"Followee is required"]
+        type: String
     }
     },{
         timestamps: true
     }
 )
 
-const followModel = mongoose.model('follows',"followSchema")
+const followModel = mongoose.model('follows',followSchema)
 
 module.exports = followModel;
+
+
+/**
+ * Three layer on backend 
+ * schema validator
+ * 
+ * 
+ */
+
+// 12 byte to store the id of mongodb user. --store the likes 
+
+//Today task --> follow schema , create a simple property status --> type string 
