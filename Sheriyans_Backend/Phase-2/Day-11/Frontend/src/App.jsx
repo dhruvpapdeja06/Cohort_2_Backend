@@ -1,13 +1,16 @@
+
+import { RouterProvider } from 'react-router'
+import AppRoutes from "./AppRoutes"
 import React from 'react'
-import "./style.scss"
+import './style.scss'
 
 const App = () =>{
 
     return (
-        <main></main>
+        <AppRoutes/>
     )
 }
 
 export default App;
 
-//some times this dependency required  
+//some times this dependency required   --> sass

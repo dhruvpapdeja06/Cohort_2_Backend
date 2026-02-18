@@ -3,6 +3,7 @@
 
 const express = require("express")
 const cookieParser = require("cookie-parser")
+const cors = require("cors")
 
 
 const app = express()
@@ -11,6 +12,10 @@ const app = express()
 // middleware
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+    credentials: true,
+    origin: "http://localhost:5173"
+}))
 // app.use(express.urlencoded({ extended: true }));
 
 
