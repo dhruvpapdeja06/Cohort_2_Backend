@@ -12,9 +12,9 @@ const postSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
-        required: [true,"user id is required to create post"]
-        
-    }
+        required: [true,"user id is required to create post"]  
+    },
+    
 })
 
 const postModel = mongoose.model("posts",postSchema);
@@ -22,3 +22,4 @@ const postModel = mongoose.model("posts",postSchema);
 module.exports = postModel;
 
 // Token forgery --> Read or verify ,with the help of JWT, Token wrong means --> temper
+// storage of one objId size in mongodb --12bytes
