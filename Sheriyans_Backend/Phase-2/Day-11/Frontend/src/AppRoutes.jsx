@@ -1,6 +1,6 @@
 import { BrowserRouter,Routes,Route} from "react-router"
-import Login from "./features/auth/pages/Login"
-import Register from "./features/auth/pages/Register"
+import Login from "./features/pages/Login"
+import Register from "./features/pages/Register"
 
 
 function AppRoutes(){

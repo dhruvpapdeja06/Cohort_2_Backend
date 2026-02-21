@@ -1,6 +1,7 @@
 const express = require("express")
 const authRouter = express.Router()
 const authController = require('../controllers/auth.controller')
+const identifyUser = require('../middlewares/auth.middleware')
 
 /**
  *  /post/api/register
@@ -66,6 +67,13 @@ authRouter.post('/login',authController.loginController)
 
 module.exports = authRouter;
 
+
+/**
+ * @route GET/api/auth/get-me
+ * @desc Get the currently login user' info
+ * @access Private
+ */
+authRouter.get('/get-me',identifyUser,authController.getMeController)
 
 //Sever bandwidth pricing --> If size of image is 20kb then 200mb 
 // -Sever bandwidth pricing is high as compared to cloud stroage provider. --> pricing is low in cloud provider

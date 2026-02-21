@@ -1,0 +1,18 @@
+
+--> UI layer show
+--> State --> login user, what to show it --> custom hooks
+--> API Layer is responsible for frontend and backend communication
+
+--> Problem in Yesterday Class --> UI Layer communicate with the backend here remove it . 
+
+--> UI layer in pages,component --> only userInterface 
+
+--> Create the dummy API for / 
+
+--> Remove the backend logic 
+
+--Flow first API layer then hook then State
+
+--> API layer , inside auth service folder --> all code with related to backend here.
+
+--> Frontend par different work like post,story ,status all the code  , but related to auth --> auth.api.js
